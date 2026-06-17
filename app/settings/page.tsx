@@ -5,13 +5,15 @@ import BottomNav from "@/components/BottomNav";
 
 export default function SettingsPage() {
   const [pushEnabled, setPushEnabled] = useState(false);
-  const [pushSupported, setPushSupported] = useState(false);
+  const [pushSupported] = useState(() =>
+    typeof window !== "undefined" &&
+    "serviceWorker" in navigator &&
+    "PushManager" in window
+  );
   const [toggling, setToggling] = useState(false);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    setPushSupported("serviceWorker" in navigator && "PushManager" in window);
-
     // Register service worker
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js").catch(() => {});

@@ -95,13 +95,13 @@ export default function ProgressPage() {
   const currentStreak = (() => {
     const today = new Date().toISOString().slice(0, 10);
     let streak = 0;
-    let check = new Date();
+    const checkDate = new Date();
     const doneDates = new Set(logs.map((l) => l.date));
     while (true) {
-      const d = check.toISOString().slice(0, 10);
+      const d = checkDate.toISOString().slice(0, 10);
       if (d === today || doneDates.has(d)) {
         if (doneDates.has(d)) streak++;
-        check.setDate(check.getDate() - 1);
+        checkDate.setDate(checkDate.getDate() - 1);
       } else break;
     }
     return streak;

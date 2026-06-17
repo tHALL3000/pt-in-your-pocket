@@ -3,15 +3,16 @@
 import { useEffect, useState } from "react";
 import { getDailyMessage } from "@/content/motivation";
 
+const message = getDailyMessage();
+
 export default function MotivationBanner() {
   const [dismissed, setDismissed] = useState(true);
-  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
     const lastDismissed = localStorage.getItem("pt-motivation-dismissed");
-    setMessage(getDailyMessage());
     if (lastDismissed !== today) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDismissed(false);
     }
   }, []);
@@ -29,7 +30,6 @@ export default function MotivationBanner() {
       className="fixed inset-0 z-50 flex flex-col items-center justify-center p-8"
       style={{ background: "rgba(253,248,240,0.97)" }}
     >
-      {/* Decorative leaf */}
       <div className="mb-8 text-6xl select-none" aria-hidden>🌿</div>
 
       <p
