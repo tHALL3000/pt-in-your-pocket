@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model PtExercise {
+  id              String            @id @default(cuid())
+  name            String
+  description     String
+  category        String
+  position        String
+  recommendedReps Int
+  recommendedSets Int
+  safetyNote      String?
+  youtubeVideoId  String?
+  order           Int
+  entries         PtExerciseEntry[]
+}
+
+model PtWorkoutLog {
+  id        String            @id @default(cuid())
+  date      String            @unique
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  painLevel Int?
+  notes     String?
+  entries   PtExerciseEntry[]
+}
+
+model PtExerciseEntry {
+  id         String       @id @default(cuid())
+  logId      String
+  log        PtWorkoutLog @relation(fields: [logId], references: [id], onDelete: Cascade)
+  exerciseId String
+  exercise   PtExercise   @relation(fields: [exerciseId], references: [id])
+  repsDone   Int          @default(0)
+  setsDone   Int          @default(0)
+}
+
+model PtPushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,19 @@
+name: Daily PT Reminder
+
+on:
+  schedule:
+    # Fires at 10:00 AM US Central Time (16:00 UTC)
+    # Adjust this UTC time to match the desired local reminder time
+    - cron: "0 16 * * *"
+  workflow_dispatch: # Allow manual trigger for testing
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send push notifications
+        run: |
+          curl -X POST "${{ secrets.APP_URL }}/api/cron/remind" \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            --fail
