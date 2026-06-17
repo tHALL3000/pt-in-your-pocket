@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+export const runtime = "edge";
+
 // GET /api/log?date=YYYY-MM-DD
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);

@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { sendPushNotification } from "@/lib/push";
-import { getRandomReminderMessage } from "@/content/motivation";
 
+export const runtime = "edge";
+
+// This endpoint returns subscriptions to the GitHub Actions cron job,
+// which handles the actual web push sending in Node.js (not edge).
 export async function POST(req: Request) {
   const secret = req.headers.get("x-cron-secret");
   if (secret !== process.env.CRON_SECRET) {
@@ -14,26 +16,5 @@ export async function POST(req: Request) {
     .from("PtPushSubscription")
     .select("endpoint, p256dh, auth");
 
-  if (!subscriptions || subscriptions.length === 0) {
-    return NextResponse.json({ sent: 0 });
-  }
-
-  const message = getRandomReminderMessage();
-  let sent = 0;
-
-  for (const sub of subscriptions) {
-    try {
-      await sendPushNotification(sub, {
-        title: "PT Companion 🌿",
-        body: message,
-        url: "/",
-      });
-      sent++;
-    } catch {
-      // Subscription may be expired — remove it
-      await admin.from("PtPushSubscription").delete().eq("endpoint", sub.endpoint);
-    }
-  }
-
-  return NextResponse.json({ sent });
+  return NextResponse.json({ subscriptions: subscriptions ?? [] });
 }

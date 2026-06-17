@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+export const runtime = "edge";
+
 // POST /api/push — store a push subscription
 export async function POST(req: Request) {
   const { endpoint, keys } = await req.json();

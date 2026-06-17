@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 
+export const runtime = "edge";
+
 // GET /api/progress — returns all logs (last 90 days) with entries
 export async function GET() {
   const admin = createAdminClient();
