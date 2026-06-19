@@ -91,30 +91,32 @@ export default function ExportPage() {
               return (
                 <div
                   key={log.date}
-                  className="rounded-2xl p-4 flex flex-col gap-2"
+                  className="print-log-entry rounded-2xl p-4 flex flex-col gap-2"
                   style={{ background: "#f5eddf", border: "1px solid #e0d0bc" }}
                 >
                   <div className="flex justify-between items-start">
                     <span
+                      className="print-log-date"
                       style={{
-                        fontFamily: "var(--font-lora, Georgia, serif)",
+                        fontFamily: "var(--font-cormorant, Georgia, serif)",
                         fontWeight: 700,
                         color: "#3d6b4a",
                         fontSize: "1rem",
                       }}
                     >
                       {new Date(log.date + "T12:00:00").toLocaleDateString("en-US", {
-                        weekday: "short",
-                        month: "short",
+                        weekday: "long",
+                        month: "long",
                         day: "numeric",
+                        year: "numeric",
                       })}
                     </span>
                     <div className="flex gap-3">
-                      <span style={{ fontSize: "0.9rem", color: "#3d6b4a" }}>
-                        {totalReps} reps
+                      <span className="print-log-reps" style={{ fontSize: "0.9rem", color: "#3d6b4a" }}>
+                        {totalReps} total reps
                       </span>
                       {log.painLevel && (
-                        <span style={{ fontSize: "0.9rem", color: "#b87d7d" }}>
+                        <span className="print-log-reps" style={{ fontSize: "0.9rem", color: "#b87d7d" }}>
                           Pain: {log.painLevel}/10
                         </span>
                       )}
@@ -125,16 +127,16 @@ export default function ExportPage() {
                     {log.entries.map((e, i) => (
                       <span
                         key={i}
-                        className="rounded-lg px-2 py-0.5"
+                        className="print-log-exercise-tag rounded-lg px-2 py-0.5"
                         style={{ fontSize: "0.8rem", background: "#e8f0e4", color: "#3d6b4a" }}
                       >
-                        {e.exercise.name}: {e.repsDone}r
+                        {e.exercise.name}: {e.repsDone} reps
                       </span>
                     ))}
                   </div>
 
                   {log.notes && (
-                    <p style={{ margin: 0, fontSize: "0.9rem", color: "#5c4033", fontStyle: "italic" }}>
+                    <p className="print-log-notes" style={{ margin: 0, fontSize: "0.9rem", color: "#5c4033", fontStyle: "italic" }}>
                       &ldquo;{log.notes}&rdquo;
                     </p>
                   )}
