@@ -163,51 +163,26 @@
   }
 
   body {
-    background: white !important;
-    background-image: none !important;
     font-size: 18pt;
     line-height: 1.6;
-    color: #111 !important;
     font-family: Georgia, serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  h1 { font-size: 26pt; margin-bottom: 6pt; color: #1a1a1a !important; }
-  h2 { font-size: 22pt; margin-bottom: 4pt; color: #1a1a1a !important; }
-  h3 { font-size: 18pt; color: #1a1a1a !important; }
+  h1 { font-size: 26pt; margin-bottom: 6pt; }
+  h2 { font-size: 22pt; margin-bottom: 4pt; }
+  h3 { font-size: 18pt; }
   p, span, li { font-size: 16pt; }
 
-  /* Print log entries as clean stacked blocks */
   .print-log-entry {
-    border: 2pt solid #333 !important;
-    border-radius: 0 !important;
     padding: 14pt !important;
     margin-bottom: 12pt !important;
     page-break-inside: avoid;
-    background: white !important;
   }
 
-  .print-log-date {
-    font-size: 18pt !important;
-    font-weight: bold;
-    color: #111 !important;
-  }
-
-  .print-log-reps {
-    font-size: 16pt !important;
-    color: #111 !important;
-  }
-
-  .print-log-exercise-tag {
-    font-size: 14pt !important;
-    background: #eee !important;
-    color: #111 !important;
-    border-radius: 0 !important;
-    padding: 2pt 8pt !important;
-    border: 1pt solid #999 !important;
-  }
-
-  .print-log-notes {
-    font-size: 15pt !important;
-    color: #333 !important;
-  }
+  .print-log-date { font-size: 18pt !important; font-weight: bold; }
+  .print-log-reps { font-size: 16pt !important; }
+  .print-log-exercise-tag { font-size: 14pt !important; padding: 2pt 8pt !important; }
+  .print-log-notes { font-size: 15pt !important; }
 }
