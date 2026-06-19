@@ -67,6 +67,7 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
             <ExerciseAnimation
               position={exercise.position as "sitting" | "standing" | "lying"}
               category={exercise.category}
+              exerciseId={exercise.id}
             />
             {exercise.youtubeVideoId && (
               <a
