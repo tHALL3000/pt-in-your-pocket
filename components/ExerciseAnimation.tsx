@@ -144,21 +144,82 @@ function AnklePumpsSVG({ progress, className }: { progress: number; className?: 
   );
 }
 
-/* ─── Progress driver: runs a RAF loop and returns 0..1 progress ─── */
-function useAnimationProgress(cycleDurationMs = 3000) {
+/* ─── Progress driver with play/pause/speed/reset ─── */
+function useAnimationProgress(cycleDurationMs = 3000, playing = true, speed = 1) {
   const [progress, setProgress] = useState(0);
+  const accumulated = useRef(0);
+  const lastTs = useRef<number | null>(null);
+
+  const reset = () => { accumulated.current = 0; lastTs.current = null; setProgress(0); };
+
   useEffect(() => {
+    if (!playing) { lastTs.current = null; return; }
     let raf: number;
-    let start: number | null = null;
     function tick(ts: number) {
-      if (!start) start = ts;
-      setProgress(((ts - start) % cycleDurationMs) / cycleDurationMs);
+      if (lastTs.current !== null) {
+        accumulated.current += (ts - lastTs.current) * speed;
+      }
+      lastTs.current = ts;
+      setProgress((accumulated.current % cycleDurationMs) / cycleDurationMs);
       raf = requestAnimationFrame(tick);
     }
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [cycleDurationMs]);
-  return progress;
+  }, [playing, speed, cycleDurationMs]);
+
+  return { progress, reset };
+}
+
+const SPEEDS = [{ label: "0.5×", value: 0.5 }, { label: "1×", value: 1 }, { label: "1.5×", value: 1.5 }];
+
+/* ─── Player controls UI ─── */
+function PlayerControls({ playing, onToggle, onReset, speed, onSpeed }: {
+  playing: boolean; onToggle: () => void; onReset: () => void;
+  speed: number; onSpeed: (s: number) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-3 px-4 py-4" style={{ background: "#f5eddf", borderTop: "1px solid #e0d0bc" }}>
+      <div className="flex gap-2">
+        <button
+          onClick={onToggle}
+          className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold"
+          style={{ background: "#40513b", color: "#fdf8f0", fontSize: "1rem", border: "none", minHeight: "52px" }}
+        >
+          {playing ? "⏸ Pause" : "▶ Play"}
+        </button>
+        <button
+          onClick={onReset}
+          className="flex items-center justify-center rounded-xl px-4"
+          style={{ background: "#e0d8cc", color: "#3d3123", border: "none", fontSize: "1.2rem", minHeight: "52px" }}
+          aria-label="Restart"
+        >
+          ↺
+        </button>
+      </div>
+      <div className="flex items-center justify-between">
+        <span style={{ fontSize: "0.85rem", color: "#8b6355", fontWeight: 600, letterSpacing: "0.05em" }}>SPEED</span>
+        <div className="flex rounded-xl overflow-hidden" style={{ border: "1px solid #d4c4ac" }}>
+          {SPEEDS.map((s) => (
+            <button
+              key={s.value}
+              onClick={() => onSpeed(s.value)}
+              style={{
+                padding: "6px 14px",
+                fontSize: "0.9rem",
+                fontWeight: speed === s.value ? 700 : 400,
+                background: speed === s.value ? "#40513b" : "#fdf8f0",
+                color: speed === s.value ? "#fdf8f0" : "#5c4033",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 /* ─── Generic fallback animations ─── */
@@ -218,12 +279,21 @@ function GenericAnimation({ position, category }: { position: string; category: 
 
 /* ─── Main export ─── */
 export default function ExerciseAnimation({ position, category, exerciseId }: ExerciseAnimationProps) {
-  const progress = useAnimationProgress(3000);
+  const [playing, setPlaying] = useState(true);
+  const [speed, setSpeed] = useState(1);
+  const { progress, reset } = useAnimationProgress(3000, playing, speed);
 
   if (exerciseId === "ex-01") {
     return (
       <div className="w-full rounded-xl overflow-hidden" style={{ background: "#1a0e2a" }}>
         <AnklePumpsSVG progress={progress} className="w-full h-auto" />
+        <PlayerControls
+          playing={playing}
+          onToggle={() => setPlaying((p) => !p)}
+          onReset={reset}
+          speed={speed}
+          onSpeed={setSpeed}
+        />
       </div>
     );
   }
