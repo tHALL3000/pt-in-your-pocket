@@ -141,15 +141,37 @@ export default function SettingsPage() {
 
         {/* About */}
         <div
-          className="rounded-2xl p-5 flex flex-col gap-2"
+          className="rounded-2xl p-5 flex flex-col gap-3"
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <h2 style={{ margin: 0, fontSize: "1.1rem" }}>About</h2>
           <p style={{ margin: 0, fontSize: "0.9rem", color: "#8b6355", lineHeight: 1.6 }}>
-            PT Companion is a personal home exercise app for knee recovery. All your data stays
-            private and is only accessible on this device.
+            PT Companion is an open-source personal exercise tracker for home use during knee recovery.
+            All data stays private and is only stored on this device.
           </p>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "#8b6355" }}>
+          <div
+            className="rounded-xl p-3 flex flex-col gap-2"
+            style={{ background: "#fff4f4", border: "1px solid #d4a5a5" }}
+          >
+            <p style={{ margin: 0, fontSize: "0.85rem", fontWeight: 700, color: "#7a2f2f", lineHeight: 1.5 }}>
+              ⚠️ Medical Disclaimer
+            </p>
+            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+              This app is not medical advice. The creator is not a doctor, physical therapist, or licensed
+              healthcare provider. All exercises should be performed only under the guidance and approval
+              of your own physical therapist or physician.
+            </p>
+            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+              By using this app or any part of its open-source code, you acknowledge that you use it
+              entirely at your own risk. The creator assumes no liability for any injury, harm, or
+              adverse outcome that may result from use of this app.
+            </p>
+            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+              Stop immediately and consult your healthcare provider if you experience pain, swelling,
+              or discomfort during any exercise.
+            </p>
+          </div>
+          <p style={{ margin: 0, fontSize: "0.85rem", color: "#8b6355" }}>
             Made with 🌿 and care.
           </p>
         </div>
