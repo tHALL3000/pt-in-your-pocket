@@ -6,6 +6,7 @@ import ExerciseCard from "@/components/ExerciseCard";
 import BottomNav from "@/components/BottomNav";
 import Link from "next/link";
 import CornerDecoration from "@/components/CornerDecoration";
+import { type RoutineLevel, ROUTINE_LIMITS, ROUTINE_META, readRoutineLevel } from "@/lib/routine";
 
 interface Exercise {
   id: string;
@@ -17,11 +18,13 @@ interface Exercise {
   recommendedSets: number;
   safetyNote?: string | null;
   youtubeVideoId?: string | null;
+  order: number;
 }
 
 export default function TodayPage() {
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [loading, setLoading] = useState(true);
+  const [routineLevel, setRoutineLevel] = useState<RoutineLevel>("starter");
 
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
@@ -30,6 +33,7 @@ export default function TodayPage() {
   });
 
   useEffect(() => {
+    setRoutineLevel(readRoutineLevel());
     fetch("/api/exercises")
       .then((r) => r.json())
       .then((d) => {
@@ -37,6 +41,9 @@ export default function TodayPage() {
         setLoading(false);
       });
   }, []);
+
+  const visibleExercises = exercises.filter((ex) => ex.order <= ROUTINE_LIMITS[routineLevel]);
+  const meta = ROUTINE_META[routineLevel];
 
   return (
     <>
@@ -51,7 +58,7 @@ export default function TodayPage() {
           <p style={{ fontSize: "0.9rem", color: "#87a878", fontWeight: 500 }}>{today}</p>
           <h1 style={{ margin: 0 }}>Today&apos;s Exercises</h1>
           <p style={{ fontSize: "0.95rem", color: "#8b6355", margin: 0 }}>
-            {exercises.length} exercises · Take your time
+            {meta.label} · {visibleExercises.length} exercises · Take your time
           </p>
         </div>
 
@@ -59,6 +66,24 @@ export default function TodayPage() {
         <Link href="/log" className="witchy-btn-primary w-full gap-2 no-print">
           📋 Log today&apos;s workout
         </Link>
+
+        {/* Routine callout */}
+        {routineLevel !== "full" && !loading && (
+          <div
+            className="rounded-xl px-4 py-3 flex items-center justify-between gap-3"
+            style={{ background: "#eaf2ea", border: "1px solid #b5cca8" }}
+          >
+            <p style={{ margin: 0, fontSize: "0.9rem", color: "#3d6b4a", lineHeight: 1.5 }}>
+              🌱 {meta.desc}
+            </p>
+            <Link
+              href="/settings"
+              style={{ fontSize: "0.85rem", color: "#3d6b4a", fontWeight: 700, whiteSpace: "nowrap", flexShrink: 0 }}
+            >
+              Change →
+            </Link>
+          </div>
+        )}
 
         {/* Exercise list */}
         {loading ? (
@@ -73,7 +98,7 @@ export default function TodayPage() {
           </div>
         ) : (
           <div className="flex flex-col gap-4">
-            {exercises.map((ex) => (
+            {visibleExercises.map((ex) => (
               <ExerciseCard key={ex.id} exercise={ex} compact />
             ))}
           </div>

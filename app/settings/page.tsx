@@ -3,8 +3,18 @@
 import { useEffect, useState } from "react";
 import BottomNav from "@/components/BottomNav";
 import CornerDecoration from "@/components/CornerDecoration";
+import { type RoutineLevel, ROUTINE_META, readRoutineLevel, writeRoutineLevel } from "@/lib/routine";
 
 export default function SettingsPage() {
+  const [routineLevel, setRoutineLevel] = useState<RoutineLevel>("starter");
+
+  useEffect(() => { setRoutineLevel(readRoutineLevel()); }, []);
+
+  function handleRoutineChange(level: RoutineLevel) {
+    setRoutineLevel(level);
+    writeRoutineLevel(level);
+  }
+
   const [pushEnabled, setPushEnabled] = useState(false);
   const [pushSupported] = useState(() =>
     typeof window !== "undefined" &&
@@ -85,6 +95,57 @@ export default function SettingsPage() {
     <>
       <main className="flex flex-col gap-6 px-4 pt-6 pb-32" style={{ minHeight: "100dvh", position: "relative" }}>
         <h1 style={{ margin: 0 }}>Settings</h1>
+
+        {/* Your Routine */}
+        <div
+          className="rounded-2xl p-5 flex flex-col gap-4"
+          style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
+        >
+          <div>
+            <h2 style={{ margin: 0, fontSize: "1.2rem" }}>Your Routine</h2>
+            <p style={{ margin: "6px 0 0", fontSize: "0.95rem", color: "#8b6355", lineHeight: 1.5 }}>
+              Choose how many exercises to show on your Today page. You can always change this as you get stronger.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {(["starter", "building", "full"] as RoutineLevel[]).map((tier) => {
+              const meta = ROUTINE_META[tier];
+              const isActive = routineLevel === tier;
+              return (
+                <button
+                  key={tier}
+                  onClick={() => handleRoutineChange(tier)}
+                  style={{
+                    background: isActive ? "#eaf2ea" : "#fdf8f0",
+                    border: `2px solid ${isActive ? "#3d6b4a" : "#e0d0bc"}`,
+                    borderRadius: "14px",
+                    padding: "1rem 1.1rem",
+                    minHeight: "70px",
+                    textAlign: "left",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "0.75rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <div>
+                    <p style={{ margin: 0, fontSize: "1rem", fontWeight: 700, color: "#3d3123" }}>
+                      {meta.label}
+                    </p>
+                    <p style={{ margin: "3px 0 0", fontSize: "0.85rem", color: "#8b6355", lineHeight: 1.4 }}>
+                      {meta.count} exercises · {meta.desc.split(" · ")[1] ?? meta.desc}
+                    </p>
+                  </div>
+                  {isActive && (
+                    <span style={{ fontSize: "1.4rem", color: "#3d6b4a", flexShrink: 0 }}>✓</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
         {/* Push notifications */}
         <div
