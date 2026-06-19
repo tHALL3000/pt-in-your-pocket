@@ -55,17 +55,7 @@ export default function TodayPage() {
         </div>
 
         {/* Quick log CTA */}
-        <Link
-          href="/log"
-          className="flex items-center justify-center gap-2 rounded-2xl py-4 font-semibold no-print"
-          style={{
-            background: "#3d6b4a",
-            color: "#fdf8f0",
-            fontSize: "1.1rem",
-            textDecoration: "none",
-            minHeight: "60px",
-          }}
-        >
+        <Link href="/log" className="witchy-btn-primary w-full gap-2 no-print">
           📋 Log today&apos;s workout
         </Link>
 

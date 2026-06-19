@@ -26,24 +26,12 @@ const positionLabel: Record<string, string> = {
   lying: "🛌 Lying down",
 };
 
-const categoryColor: Record<string, string> = {
-  strength: "#c5b4e3",
-  balance: "#87a878",
-  flexibility: "#d4a5a5",
-};
 
 export default function ExerciseCard({ exercise, compact = false }: ExerciseCardProps) {
   const [expanded, setExpanded] = useState(!compact);
 
   return (
-    <div
-      className="rounded-2xl overflow-hidden"
-      style={{
-        background: "#fdf8f0",
-        border: "2px solid #e0d8cc",
-        boxShadow: "0 4px 18px rgba(61,107,74,0.08)",
-      }}
-    >
+    <div className="witchy-exercise-card">
       {/* Header */}
       <button
         className="w-full text-left p-4 flex items-start justify-between gap-3"
@@ -62,25 +50,13 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
             {exercise.name}
           </h3>
           <div className="flex flex-wrap gap-2 mt-1">
-            <span
-              className="rounded-full px-3 py-0.5 text-sm font-medium"
-              style={{ background: "#f0e8d8", color: "#5c4033" }}
-            >
+            <span className="witchy-tag-stitched">
               {positionLabel[exercise.position] ?? exercise.position}
             </span>
-            <span
-              className="rounded-full px-3 py-0.5 text-sm font-medium"
-              style={{
-                background: categoryColor[exercise.category] ?? "#e0d8cc",
-                color: "#3d6b4a",
-              }}
-            >
+            <span className="witchy-tag-stitched alt-color">
               {exercise.category}
             </span>
-            <span
-              className="rounded-full px-3 py-0.5 text-sm"
-              style={{ background: "#e8f0e4", color: "#3d6b4a" }}
-            >
+            <span className="witchy-tag-stitched">
               {exercise.recommendedReps} reps × {exercise.recommendedSets} sets
             </span>
           </div>

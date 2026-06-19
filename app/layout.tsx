@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Lora, Inter } from "next/font/google";
+import { Lora, Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const lora = Lora({
   variable: "--font-lora",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
@@ -39,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${inter.variable} h-full`}>
+    <html lang="en" className={`${lora.variable} ${inter.variable} ${cormorant.variable} h-full`}>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
