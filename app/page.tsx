@@ -5,6 +5,7 @@ import MotivationBanner from "@/components/MotivationBanner";
 import ExerciseCard from "@/components/ExerciseCard";
 import BottomNav from "@/components/BottomNav";
 import Link from "next/link";
+import CornerDecoration from "@/components/CornerDecoration";
 
 interface Exercise {
   id: string;
@@ -43,7 +44,7 @@ export default function TodayPage() {
 
       <main
         className="flex flex-col gap-5 px-4 pt-6 pb-28 leaf-bg"
-        style={{ minHeight: "100dvh" }}
+        style={{ minHeight: "100dvh", position: "relative" }}
       >
         {/* Header */}
         <div className="flex flex-col gap-1">
@@ -77,6 +78,7 @@ export default function TodayPage() {
             ))}
           </div>
         )}
+        <CornerDecoration src="/decorations/bottom-right-corner-root.png" corner="bottom-right" />
       </main>
 
       <BottomNav />

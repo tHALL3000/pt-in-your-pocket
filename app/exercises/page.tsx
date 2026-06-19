@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ExerciseCard from "@/components/ExerciseCard";
 import BottomNav from "@/components/BottomNav";
+import CornerDecoration from "@/components/CornerDecoration";
 
 interface Exercise {
   id: string;
@@ -39,7 +40,7 @@ export default function ExercisesPage() {
 
   return (
     <>
-      <main className="flex flex-col gap-5 px-4 pt-6 pb-32" style={{ minHeight: "100dvh" }}>
+      <main className="flex flex-col gap-5 px-4 pt-6 pb-32" style={{ minHeight: "100dvh", position: "relative" }}>
         <div>
           <h1 style={{ margin: 0 }}>Exercise Library</h1>
           <p style={{ fontSize: "0.95rem", color: "#8b6355", margin: "4px 0 0" }}>
@@ -89,6 +90,7 @@ export default function ExercisesPage() {
             )}
           </div>
         )}
+        <CornerDecoration src="/decorations/bottom-left-corner-flower.png" corner="bottom-left" />
       </main>
 
       <BottomNav />

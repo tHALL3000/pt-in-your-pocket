@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BottomNav from "@/components/BottomNav";
+import CornerDecoration from "@/components/CornerDecoration";
 
 export default function SettingsPage() {
   const [pushEnabled, setPushEnabled] = useState(false);
@@ -82,7 +83,7 @@ export default function SettingsPage() {
 
   return (
     <>
-      <main className="flex flex-col gap-6 px-4 pt-6 pb-32" style={{ minHeight: "100dvh" }}>
+      <main className="flex flex-col gap-6 px-4 pt-6 pb-32" style={{ minHeight: "100dvh", position: "relative" }}>
         <h1 style={{ margin: 0 }}>Settings</h1>
 
         {/* Push notifications */}
@@ -175,6 +176,7 @@ export default function SettingsPage() {
             Made with 🌿 and care.
           </p>
         </div>
+        <CornerDecoration src="/decorations/bottom-right-corner-root.png" corner="bottom-right" />
       </main>
 
       <BottomNav />
