@@ -39,14 +39,7 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
         aria-expanded={expanded}
       >
         <div className="flex-1">
-          <h3
-            style={{
-              fontFamily: "var(--font-lora, Georgia, serif)",
-              fontSize: "1.2rem",
-              color: "#3d6b4a",
-              margin: 0,
-            }}
-          >
+          <h3 style={{ margin: 0 }}>
             {exercise.name}
           </h3>
           <div className="flex flex-wrap gap-2 mt-1">
