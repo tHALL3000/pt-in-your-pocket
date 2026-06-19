@@ -29,11 +29,27 @@
 
   body {
     background-color: #fceecf;
-    background-image: url("/natural-paper.png");
-    background-repeat: repeat;
     color: #3d3123;
     font-family: var(--font-sans);
     min-height: 100dvh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("/natural-paper.png");
+    background-repeat: repeat;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3 {
