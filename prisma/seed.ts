@@ -6,7 +6,11 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const exercises = [
+const exercises: {
+  id: string; name: string; description: string; category: string;
+  position: string; recommendedReps: number; recommendedSets: number;
+  safetyNote: string; youtubeVideoId?: string; order: number;
+}[] = [
   {
     id: "ex-01",
     name: "Ankle Pumps",
@@ -16,7 +20,7 @@ const exercises = [
     recommendedReps: 20,
     recommendedSets: 3,
     safetyNote: "Move only your ankle — keep your knee still and supported.",
-    youtubeVideoId: "3AzfYVwGJoY",
+    youtubeVideoId: "ZAr78pwJN_g",
     order: 1,
   },
   {
@@ -28,7 +32,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Do not lift your leg. Just squeeze and hold.",
-    youtubeVideoId: "LFGrMMsAPlE",
+    youtubeVideoId: "t8OcF4ADaDY",
     order: 2,
   },
   {
@@ -40,7 +44,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Stop if you feel sharp pain. A gentle stretch is okay.",
-    youtubeVideoId: "x3mJEdGzl_Q",
+    youtubeVideoId: "Bz0wSFRjH2c",
     order: 3,
   },
   {
@@ -52,7 +56,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Keep the roll under your knee the whole time. Lower slowly — don't drop.",
-    youtubeVideoId: "AuKVAu_NMYM",
+    youtubeVideoId: "RGqKrP7lG0w",
     order: 4,
   },
   {
@@ -64,7 +68,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Keep the working leg straight throughout. Tighten the quad before lifting.",
-    youtubeVideoId: "0KF6XzQQ8SI",
+    youtubeVideoId: "gQob47IBlYQ",
     order: 5,
   },
   {
@@ -76,7 +80,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Lower slowly — resist gravity. Do not let the leg drop.",
-    youtubeVideoId: "yfPMPd4J7oI",
+    youtubeVideoId: "nO81xJN9RhI",
     order: 6,
   },
   {
@@ -88,7 +92,6 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Stand close to the chair. Do not lean forward — keep your back straight.",
-    youtubeVideoId: "LV7ePxW4e9w",
     order: 7,
   },
   {
@@ -100,7 +103,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Do not lean your body to the side — keep your trunk upright.",
-    youtubeVideoId: "mMSq0iWUoqY",
+    youtubeVideoId: "svWalRxpQ1c",
     order: 8,
   },
   {
@@ -112,7 +115,7 @@ const exercises = [
     recommendedReps: 15,
     recommendedSets: 3,
     safetyNote: "Lower all the way down before rising again. Go slow.",
-    youtubeVideoId: "0OmFsRGRpEM",
+    youtubeVideoId: "VX5N9YZ1L-E",
     order: 9,
   },
   {
@@ -124,7 +127,7 @@ const exercises = [
     recommendedReps: 10,
     recommendedSets: 3,
     safetyNote: "Start with light resistance. This targets the very last part of knee straightening — important for walking properly.",
-    youtubeVideoId: "bXqZ5PBMV7U",
+    youtubeVideoId: "7xG3MeoLjC0",
     order: 10,
   },
   {
@@ -136,7 +139,7 @@ const exercises = [
     recommendedReps: 5,
     recommendedSets: 2,
     safetyNote: "Keep the chair within arm's reach the whole time. Touch it if you need to — that's what it's there for.",
-    youtubeVideoId: "Xe6E_kllG8o",
+    youtubeVideoId: "J5F2GbSxTvQ",
     order: 11,
   },
   {
@@ -148,7 +151,7 @@ const exercises = [
     recommendedReps: 8,
     recommendedSets: 2,
     safetyNote: "Hold a railing or wall if available. Start with a very low step (4 inches). Only add height when this feels easy.",
-    youtubeVideoId: "dQqApCGd5Ss",
+    youtubeVideoId: "2g6G_GpsBoc",
     order: 12,
   },
 ];

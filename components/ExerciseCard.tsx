@@ -34,7 +34,6 @@ const categoryColor: Record<string, string> = {
 
 export default function ExerciseCard({ exercise, compact = false }: ExerciseCardProps) {
   const [expanded, setExpanded] = useState(!compact);
-  const [showVideo, setShowVideo] = useState(false);
 
   return (
     <div
@@ -95,37 +94,46 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
       {expanded && (
         <div className="px-4 pb-5 flex flex-col gap-4">
           {/* Demo */}
-          {exercise.youtubeVideoId && showVideo ? (
-            <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${exercise.youtubeVideoId}?rel=0&modestbranding=1`}
-                title={`How to do ${exercise.name}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full border-0"
-              />
-            </div>
-          ) : (
-            <div className="flex flex-col gap-2">
-              <ExerciseAnimation
-                position={exercise.position as "sitting" | "standing" | "lying"}
-                category={exercise.category}
-              />
-              {exercise.youtubeVideoId && (
-                <button
-                  onClick={() => setShowVideo(true)}
-                  className="rounded-xl py-2 text-sm font-medium"
-                  style={{
-                    background: "#f0e8d8",
-                    border: "1px solid #d4b896",
-                    color: "#5c4033",
-                  }}
+          <div className="flex flex-col gap-2">
+            <ExerciseAnimation
+              position={exercise.position as "sitting" | "standing" | "lying"}
+              category={exercise.category}
+            />
+            {exercise.youtubeVideoId && (
+              <a
+                href={`https://www.youtube.com/watch?v=${exercise.youtubeVideoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl overflow-hidden block relative"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${exercise.youtubeVideoId}/hqdefault.jpg`}
+                  alt={`Video demo: ${exercise.name}`}
+                  className="w-full h-full object-cover"
+                />
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ background: "rgba(0,0,0,0.25)" }}
                 >
-                  ▶ Watch video demo
-                </button>
-              )}
-            </div>
-          )}
+                  <div
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 64, height: 64, background: "rgba(255,255,255,0.92)" }}
+                  >
+                    <span style={{ fontSize: "1.8rem", marginLeft: 4 }}>▶</span>
+                  </div>
+                </div>
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-3 py-2"
+                  style={{ background: "rgba(0,0,0,0.5)" }}
+                >
+                  <p style={{ color: "#fff", fontSize: "0.8rem", margin: 0 }}>
+                    ▶ Tap to watch on YouTube
+                  </p>
+                </div>
+              </a>
+            )}
+          </div>
 
           {/* Description */}
           <p style={{ fontSize: "1rem", lineHeight: 1.6, color: "#5c4033", margin: 0 }}>
