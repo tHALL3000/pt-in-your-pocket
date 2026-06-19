@@ -33,7 +33,7 @@ export default function TodayPage() {
   });
 
   useEffect(() => {
-    setRoutineLevel(readRoutineLevel());
+    setRoutineLevel(readRoutineLevel()); // eslint-disable-line react-hooks/set-state-in-effect
     fetch("/api/exercises")
       .then((r) => r.json())
       .then((d) => {

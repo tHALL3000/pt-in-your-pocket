@@ -8,7 +8,7 @@ import { type RoutineLevel, ROUTINE_META, readRoutineLevel, writeRoutineLevel } 
 export default function SettingsPage() {
   const [routineLevel, setRoutineLevel] = useState<RoutineLevel>("starter");
 
-  useEffect(() => { setRoutineLevel(readRoutineLevel()); }, []);
+  useEffect(() => { setRoutineLevel(readRoutineLevel()); }, []); // eslint-disable-line react-hooks/set-state-in-effect
 
   function handleRoutineChange(level: RoutineLevel) {
     setRoutineLevel(level);
