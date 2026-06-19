@@ -31,7 +31,6 @@
     background-color: #fceecf;
     background-image: url("/natural-paper.png");
     background-repeat: repeat;
-    background-blend-mode: multiply;
     color: #3d3123;
     font-family: var(--font-sans);
     min-height: 100dvh;
