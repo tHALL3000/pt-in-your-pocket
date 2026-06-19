@@ -12,19 +12,20 @@ export default function RepCounter({ label, value, target, onChange }: RepCounte
 
   return (
     <div
-      className="flex flex-col gap-3 p-4 rounded-2xl"
+      className="flex flex-col gap-3 p-4"
       style={{
-        background: done ? "#e8f0e4" : "#fdf8f0",
-        border: `2px solid ${done ? "#87a878" : "#e0d8cc"}`,
+        background: done ? "#e8f0e4" : "rgba(255,253,249,0.88)",
+        border: `2px solid ${done ? "#87a878" : "#556b2f"}`,
+        borderRadius: "15px 225px 15px 255px / 255px 15px 225px 15px",
         transition: "all 0.2s ease",
       }}
     >
       <div className="flex items-center justify-between">
         <span
           style={{
-            fontFamily: "var(--font-lora, Georgia, serif)",
+            fontFamily: "var(--font-crete-round, 'Crete Round', Georgia, serif)",
             fontSize: "1.1rem",
-            fontWeight: 600,
+            fontWeight: 400,
             color: "#3d6b4a",
           }}
         >
@@ -57,7 +58,7 @@ export default function RepCounter({ label, value, target, onChange }: RepCounte
         <div className="flex-1 text-center">
           <span
             style={{
-              fontFamily: "var(--font-lora, Georgia, serif)",
+              fontFamily: "var(--font-serif, Georgia, serif)",
               fontSize: "2.5rem",
               fontWeight: 700,
               color: done ? "#3d6b4a" : "#5c4033",

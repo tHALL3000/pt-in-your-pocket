@@ -139,7 +139,7 @@ export default function LogPage() {
               <label
                 htmlFor="notes"
                 style={{
-                  fontFamily: "var(--font-lora, Georgia, serif)",
+                  fontFamily: "var(--font-serif, Georgia, serif)",
                   fontSize: "1.1rem",
                   fontWeight: 600,
                   color: "#3d6b4a",
@@ -173,20 +173,10 @@ export default function LogPage() {
             <button
               onClick={handleSave}
               disabled={saving}
-              style={{
-                background: saved ? "#87a878" : "#3d6b4a",
-                color: "#fdf8f0",
-                border: "none",
-                borderRadius: "16px",
-                padding: "1rem",
-                fontSize: "1.15rem",
-                fontWeight: 700,
-                minHeight: "60px",
-                width: "100%",
-                transition: "background 0.2s",
-              }}
+              className="witchy-btn-primary w-full"
+              style={saved ? { background: "#87a878" } : undefined}
             >
-              {saving ? "Saving…" : saved ? "✓ Saved!" : "Save Today's Log"}
+              {saving ? "Saving…" : saved ? "✓ Saved!" : "Save Today's Log 🌿"}
             </button>
           </>
         )}

@@ -23,7 +23,7 @@ export default function PainScale({ value, onChange }: PainScaleProps) {
     <div className="flex flex-col gap-3">
       <label
         style={{
-          fontFamily: "var(--font-lora, Georgia, serif)",
+          fontFamily: "var(--font-serif, Georgia, serif)",
           fontSize: "1.1rem",
           fontWeight: 600,
           color: "#3d6b4a",

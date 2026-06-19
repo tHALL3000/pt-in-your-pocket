@@ -138,7 +138,7 @@ export default function ProgressPage() {
                 >
                   <span
                     style={{
-                      fontFamily: "var(--font-lora, Georgia, serif)",
+                      fontFamily: "var(--font-serif, Georgia, serif)",
                       fontSize: "2rem",
                       fontWeight: 700,
                       color: "#3d6b4a",

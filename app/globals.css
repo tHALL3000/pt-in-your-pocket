@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
-
 @theme {
   --color-petal: #fdf8f0;
   --color-petal-dark: #f0e8d8;

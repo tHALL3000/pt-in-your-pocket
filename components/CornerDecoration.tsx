@@ -4,7 +4,7 @@ interface CornerDecorationProps {
   size?: number;
 }
 
-export default function CornerDecoration({ src, corner, size = 110 }: CornerDecorationProps) {
+export default function CornerDecoration({ src, corner, size = 130 }: CornerDecorationProps) {
   return (
     <img
       src={src}
@@ -12,16 +12,16 @@ export default function CornerDecoration({ src, corner, size = 110 }: CornerDeco
       aria-hidden="true"
       className="no-print"
       style={{
-        position: "absolute",
-        bottom: 0,
+        position: "fixed",
+        bottom: "calc(72px + env(safe-area-inset-bottom))",
         [corner === "bottom-right" ? "right" : "left"]: 0,
         width: size,
         height: size,
         objectFit: "contain",
         pointerEvents: "none",
         mixBlendMode: "multiply",
-        opacity: 0.85,
-        zIndex: 0,
+        opacity: 0.8,
+        zIndex: 10,
       }}
     />
   );
