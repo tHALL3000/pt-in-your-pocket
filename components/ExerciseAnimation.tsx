@@ -253,7 +253,7 @@ function HeelRaiseSVG({ progress, className }: { progress: number; className?: s
         <path d="M 330 302 L 337 316 L 332 316 L 332 328 L 328 328 L 328 316 L 323 316 Z" fill="#8a8070" opacity="0.55" />
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>RISE</text>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>RISE</text>
     </svg>
   );
 }
@@ -610,7 +610,7 @@ function StepUpsSVG({ progress, className }: { progress: number; className?: str
         <GeodeMedallion r={14} inner={5} outer={9} count={10} />
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="20" fontWeight="600" letterSpacing="5" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="20" fontWeight="600" letterSpacing="5" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         READY
       </text>
     </svg>
@@ -782,7 +782,7 @@ function TerminalKneeExtensionSVG({ progress, className }: { progress: number; c
         </g>
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         EXTEND
       </text>
     </svg>
@@ -907,11 +907,11 @@ function StraightLegRaiseSVG({ progress, className }: { progress: number; classN
 
       {/* Arrow cue */}
       <g ref={arrowRef} opacity="0.25">
-        <path d="M 210 130 L 220 148 L 214 148 L 214 160 L 206 160 L 206 148 L 200 148 Z" fill="url(#slrStone)" stroke="#1a140a" strokeWidth="1" strokeLinejoin="round" />
-        <path d="M 210 132 L 217 146 L 212 146 L 212 158 L 208 158 L 208 146 L 203 146 Z" fill="#8a8070" opacity="0.55" />
+        <path d="M 210 130 L 220 148 L 214 148 L 214 160 L 206 160 L 206 148 L 200 148 Z" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M 210 132 L 217 146 L 212 146 L 212 158 L 208 158 L 208 146 L 203 146 Z" fill="#e0d4f7" opacity="0.8" />
       </g>
 
-      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         LIFT
       </text>
     </svg>
@@ -1057,11 +1057,11 @@ function StandingKneeBendSVG({ progress, className }: { progress: number; classN
 
       {/* Arrow cue */}
       <g ref={arrowRef} opacity="0.25">
-        <path d="M 240 170 A 50 50 0 0 0 170 230" fill="none" stroke="url(#skbStone)" strokeWidth="2.5" strokeLinecap="round" />
-        <polygon points="165,228 172,240 178,232" fill="url(#skbStone)" stroke="#1a140a" strokeWidth="0.8" strokeLinejoin="round" />
+        <path d="M 240 170 A 50 50 0 0 0 170 230" fill="none" stroke="#c5b4e3" strokeWidth="2.5" strokeLinecap="round" />
+        <polygon points="165,228 172,240 178,232" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="0.8" strokeLinejoin="round" />
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="5" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="5" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         BEND
       </text>
     </svg>
@@ -1196,12 +1196,12 @@ function StandingHipAbductionSVG({ progress, className }: { progress: number; cl
 
       {/* Arrow cue */}
       <g ref={arrowRef} opacity="0.3">
-        <path d="M 280 280 A 55 55 0 0 1 290 190" fill="none" stroke="url(#shaStone)" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 4" />
-        <polygon points="288,188 296,176 302,186" fill="url(#shaStone)" stroke="#1a140a" strokeWidth="0.8" strokeLinejoin="round" />
-        <text x="300" y="240" fontSize="11" fontWeight="600" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>OUT</text>
+        <path d="M 280 280 A 55 55 0 0 1 290 190" fill="none" stroke="#c5b4e3" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 4" />
+        <polygon points="288,188 296,176 302,186" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="0.8" strokeLinejoin="round" />
+        <text x="300" y="240" fontSize="11" fontWeight="600" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>OUT</text>
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         LIFT
       </text>
     </svg>
@@ -1384,7 +1384,7 @@ function SingleLegBalanceSVG({ progress, className }: { progress: number; classN
         })}
       </g>
 
-      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="40" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         STEADY
       </text>
     </svg>
@@ -1519,11 +1519,11 @@ function ShortArcQuadSVG({ progress, className }: { progress: number; className?
 
       {/* Arrow cue */}
       <g ref={arrowRef} opacity="0.35">
-        <path d="M 374 150 L 384 168 L 378 168 L 378 180 L 370 180 L 370 168 L 364 168 Z" fill="url(#saqStone)" stroke="#1a140a" strokeWidth="1" strokeLinejoin="round" />
-        <path d="M 374 152 L 381 166 L 376 166 L 376 178 L 372 178 L 372 166 L 367 166 Z" fill="#8a8070" opacity="0.55" />
+        <path d="M 374 150 L 384 168 L 378 168 L 378 180 L 370 180 L 370 168 L 364 168 Z" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M 374 152 L 381 166 L 376 166 L 376 178 L 372 178 L 372 166 L 367 166 Z" fill="#e0d4f7" opacity="0.8" />
       </g>
 
-      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         LIFT
       </text>
     </svg>
@@ -1669,14 +1669,14 @@ function QuadSetSVG({ progress, className }: { progress: number; className?: str
 
       {/* Arrow cue */}
       <g ref={arrowRef} style={{ opacity: 0.2 }}>
-        <rect x="244" y="138" width="8" height="28" rx="3" fill="#5c544a" stroke="#3a352e" strokeWidth="1" />
-        <polygon points="248,178 236,162 260,162" fill="#5c544a" stroke="#3a352e" strokeWidth="1" strokeLinejoin="round" />
+        <rect x="244" y="138" width="8" height="28" rx="3" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="1" />
+        <polygon points="248,178 236,162 260,162" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="1" strokeLinejoin="round" />
         <path d="M 246 143 q 2 -3 4 0" fill="none" stroke="#6b8f4a" strokeWidth="1.2" strokeLinecap="round" />
         <path d="M 250 164 q -2 3 -4 0" fill="none" stroke="#6b8f4a" strokeWidth="1.2" strokeLinecap="round" />
         <circle cx="246" cy="150" r="1.3" fill="#8fbc5a" opacity="0.85" />
       </g>
 
-      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         TENSE
       </text>
     </svg>
@@ -1876,7 +1876,7 @@ function HeelSlideSVG({ progress, className }: { progress: number; className?: s
         fontSize="22"
         fontWeight="600"
         letterSpacing="6"
-        fill="#4a2d6b"
+        fill="#e8d4ff"
         style={{ fontFamily: "ui-serif, Georgia, serif" }}
       >
         SLIDE IN
@@ -2019,11 +2019,11 @@ function LongArcQuadSVG({ progress, className }: { progress: number; className?:
 
       {/* Arrow cue */}
       <g ref={arrowRef} opacity="0.35">
-        <path d="M 366 150 L 376 168 L 370 168 L 370 180 L 362 180 L 362 168 L 356 168 Z" fill="url(#laqStone)" stroke="#1a140a" strokeWidth="1" strokeLinejoin="round" />
-        <path d="M 366 152 L 373 166 L 368 166 L 368 178 L 364 178 L 364 166 L 359 166 Z" fill="#8a8070" opacity="0.55" />
+        <path d="M 366 150 L 376 168 L 370 168 L 370 180 L 362 180 L 362 168 L 356 168 Z" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M 366 152 L 373 166 L 368 166 L 368 178 L 364 178 L 364 166 L 359 166 Z" fill="#e0d4f7" opacity="0.8" />
       </g>
 
-      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#4a2d6b" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
+      <text ref={cueRef} x="200" y="80" textAnchor="middle" fontSize="22" fontWeight="600" letterSpacing="6" fill="#e8d4ff" style={{ fontFamily: "ui-serif, Georgia, serif" }}>
         EXTEND
       </text>
     </svg>
