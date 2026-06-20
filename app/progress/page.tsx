@@ -11,7 +11,6 @@ import {
   CartesianGrid,
 } from "recharts";
 import BottomNav from "@/components/BottomNav";
-import CornerDecoration from "@/components/CornerDecoration";
 import Link from "next/link";
 
 interface LogEntry {
@@ -37,7 +36,7 @@ function StreakCalendar({ logs }: { logs: LogEntry[] }) {
       <h2 style={{ margin: 0 }}>{monthName}</h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "6px" }}>
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-          <div key={d} style={{ textAlign: "center", fontSize: "0.85rem", color: "#8b6355", fontWeight: 600 }}>
+          <div key={d} style={{ textAlign: "center", fontSize: "1rem", color: "#8b6355", fontWeight: 600 }}>
             {d}
           </div>
         ))}
@@ -53,7 +52,7 @@ function StreakCalendar({ logs }: { logs: LogEntry[] }) {
                 textAlign: "center",
                 borderRadius: "8px",
                 padding: "5px 0",
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontWeight: isToday ? 700 : 400,
                 background: done ? "#3d6b4a" : isToday ? "#f0e8d8" : "transparent",
                 color: done ? "#fdf8f0" : isToday ? "#3d6b4a" : "#5c4033",
@@ -274,7 +273,6 @@ export default function ProgressPage() {
         )}
       </main>
 
-      <CornerDecoration src="/decorations/right-top-corner-grape.png" corner="bottom-right" />
       <BottomNav />
     </>
   );

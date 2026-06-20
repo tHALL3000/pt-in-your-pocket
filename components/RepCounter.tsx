@@ -24,7 +24,7 @@ export default function RepCounter({ label, value, target, onChange }: RepCounte
         <span
           style={{
             fontFamily: "var(--font-crete-round, 'Crete Round', Georgia, serif)",
-            fontSize: "1.1rem",
+            fontSize: "1.8rem",
             fontWeight: 400,
             color: "#3d6b4a",
           }}

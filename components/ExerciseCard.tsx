@@ -21,6 +21,12 @@ interface ExerciseCardProps {
   compact?: boolean;
 }
 
+function hashStr(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+
 const positionLabel: Record<string, string> = {
   sitting: "🪑 Sitting",
   standing: "🧍 Standing",
@@ -28,16 +34,16 @@ const positionLabel: Record<string, string> = {
 };
 
 const CORNER_DECORATIONS = [
-  { src: "/decorations/right-top-corner-grape.png",    style: { top: -22, right: -14 } },
-  { src: "/decorations/bottom-left-corner-flower.png", style: { bottom: -22, left: -14 } },
-  { src: "/decorations/left-top-corner-ivy.png",       style: { top: -22, left: -14 } },
-  { src: "/decorations/bottom-right-corner-root.png",  style: { bottom: -22, right: -14 } },
+  { src: "/decorations/right-top-corner-grape.png",    style: { top: -2, right: -11 } },
+  { src: "/decorations/bottom-left-corner-flower.png", style: { bottom: -9, left: -14 } },
+  { src: "/decorations/left-top-corner-ivy.png",       style: { top: -15, left: -14 } },
+  { src: "/decorations/bottom-right-corner-root.png",  style: { bottom: -9, right: -8 } },
 ];
 
 export default function ExerciseCard({ exercise, compact = false }: ExerciseCardProps) {
   const [expanded, setExpanded] = useState(!compact);
 
-  const deco = CORNER_DECORATIONS[(exercise.order ?? 1) % CORNER_DECORATIONS.length];
+  const deco = CORNER_DECORATIONS[hashStr(exercise.id) % CORNER_DECORATIONS.length];
 
   return (
     <div style={{ position: "relative", margin: "0 4px" }}>

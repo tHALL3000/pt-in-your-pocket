@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PT in Your Pocket
 
-## Getting Started
+A mobile-first PWA for home physical therapy exercise tracking, built for someone recovering from double knee replacement surgery. Designed for low-vision users: large text, minimal cognitive load, generous tap targets throughout.
 
-First, run the development server:
+## Target User
+
+A 60-year-old woman recovering from double knee replacement surgery. She:
+
+- Has **cataracts** — all text must be large and high-contrast; no small labels, no fine print
+- Uses a **single iPhone** — the app is a PWA installed to her Home Screen, no other devices
+- Is **not technical** — the UI must be immediately obvious with no onboarding or login friction
+- Exercises at home, alone — needs clear demos (animations + YouTube links) to do exercises correctly without a PT present
+- Has a **PT she reports to** — progress export (print or email) is a first-class feature
+- May have **limited grip strength or dexterity** — all tap targets are minimum 48×48px, large buttons throughout
+
+Every design and font-size decision in this codebase should be evaluated against this profile.
+
+## What it does
+
+- **Today** — Shows your current exercise routine with animated demos, rep/set targets, and YouTube video links. Routine level adjusts in Settings.
+- **Log** — Tap to count reps per exercise, rate today's pain level (1–10), add notes. Saves to Supabase.
+- **Progress** — Monthly streak calendar, rep/pain trend charts, session history. Tap any chart point to see that day's notes.
+- **Exercises** — Full library of exercises with position tags, safety notes, and animation demos.
+- **Export** — Print-friendly progress report or email directly to your physical therapist via Resend.
+- **Settings** — Choose routine level (Starter / Building up / Full), enable daily push notification reminders.
+
+A daily motivation banner shows on first open each day and dismisses with one tap.
+
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15, App Router, React 19 |
+| Styling | Tailwind CSS v4 + custom garden witch theme |
+| Database | Supabase (Postgres via Prisma) |
+| Hosting | Cloudflare Pages (`@cloudflare/next-on-pages`) |
+| Email | Resend + React Email |
+| Push notifications | Web Push (VAPID), service worker |
+| Charts | Recharts |
+| Animations | Framer Motion (exercise SVG demos) |
+
+**Fonts:** Cormorant Garamond (headings), Crete Round (card labels), Inter (body) — all loaded via `next/font/google`.
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requires a `.env.local` with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+DATABASE_URL=
+DIRECT_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
+VAPID_SUBJECT=
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Deployed automatically via Cloudflare Pages on push to `main`. The build command is `next build` and the output directory is `.vercel/output/static` (handled by `@cloudflare/next-on-pages`).
 
-To learn more about Next.js, take a look at the following resources:
+Manual deploy: push to `main` and let CI handle it. See `wrangler.toml` for project config.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Routine levels
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Exercises have an `order` field (1–12). The routine level filter in `lib/routine.ts` controls how many are shown:
 
-## Deploy on Vercel
+| Level | Exercises shown |
+|---|---|
+| Starter | 4 (gentle, non-standing) |
+| Building up | 8 |
+| Full routine | All 12 |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The selected level is persisted in `localStorage` under the key `pt_routine_level`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Medical disclaimer
+
+This app is not medical advice. The creator is not a doctor, physical therapist, or licensed healthcare provider. All exercises should be performed only under the guidance and approval of your own physical therapist or physician. Use entirely at your own risk.
+
+## License
+
+Open source. See LICENSE file if present.
