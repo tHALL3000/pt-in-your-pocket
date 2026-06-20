@@ -33,11 +33,11 @@ export async function POST(req: Request) {
 
   const admin = createAdminClient();
 
-  // Upsert the log record
+  // Upsert the log record — id must be provided since cuid() is Prisma-side only
   const { data: log, error: logError } = await admin
     .from("PtWorkoutLog")
     .upsert(
-      { date, painLevel: painLevel ?? null, notes: notes ?? null },
+      { id: crypto.randomUUID(), date, painLevel: painLevel ?? null, notes: notes ?? null },
       { onConflict: "date" }
     )
     .select()
@@ -55,6 +55,7 @@ export async function POST(req: Request) {
 
   if (entries.length > 0) {
     const rows = entries.map((e) => ({
+      id: crypto.randomUUID(),
       logId: log.id,
       exerciseId: e.exerciseId,
       repsDone: e.repsDone,
