@@ -1,5 +1,7 @@
 # PT in Your Pocket
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tHALL3000/pt-in-your-pocket&env=NEXT_PUBLIC_DEMO_MODE&envDescription=Set%20to%20true%20to%20run%20without%20a%20database%20%28localStorage%20only%29&envLink=https://github.com/tHALL3000/pt-in-your-pocket%23set-up-your-own)
+
 A mobile-first PWA for home physical therapy exercise tracking, built for someone recovering from double knee replacement surgery. Designed for low-vision users: large text, minimal cognitive load, generous tap targets throughout.
 
 ## Target User
