@@ -2,3 +2,6 @@ name = "pt-in-your-pocket"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXT_PUBLIC_SUPABASE_URL = "https://jkddmvztppoqfnfealil.supabase.co"
