@@ -1056,7 +1056,7 @@ function StandingKneeBendSVG({ progress, className }: { progress: number; classN
       </g>
 
       {/* Arrow cue */}
-      <g ref={arrowRef} opacity="0.25">
+      <g ref={arrowRef} opacity="0.25" transform="translate(0, 200) scale(1, -1) translate(0, -200)">
         <path d="M 240 170 A 50 50 0 0 0 170 230" fill="none" stroke="#c5b4e3" strokeWidth="2.5" strokeLinecap="round" />
         <polygon points="165,228 172,240 178,232" fill="#c5b4e3" stroke="#9b84c8" strokeWidth="0.8" strokeLinejoin="round" />
       </g>
