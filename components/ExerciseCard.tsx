@@ -40,7 +40,7 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
   const deco = CORNER_DECORATIONS[(exercise.order ?? 1) % CORNER_DECORATIONS.length];
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", margin: "0 4px" }}>
       <div className="witchy-exercise-card">
         {/* Header */}
         <button
