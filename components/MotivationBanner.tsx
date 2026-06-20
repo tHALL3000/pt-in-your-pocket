@@ -3,17 +3,16 @@
 import { useEffect, useState } from "react";
 import { getDailyMessage } from "@/content/motivation";
 
-const message = getDailyMessage();
-
 export default function MotivationBanner() {
   const [dismissed, setDismissed] = useState(true);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
     const lastDismissed = localStorage.getItem("pt-motivation-dismissed");
     if (lastDismissed !== today) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDismissed(false);
+      setMessage(getDailyMessage()); // eslint-disable-line react-hooks/set-state-in-effect
+      setDismissed(false); // eslint-disable-line react-hooks/set-state-in-effect
     }
   }, []);
 
