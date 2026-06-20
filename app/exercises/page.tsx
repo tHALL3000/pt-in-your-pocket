@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ExerciseCard from "@/components/ExerciseCard";
 import BottomNav from "@/components/BottomNav";
 import CornerDecoration from "@/components/CornerDecoration";
+import { DEMO_MODE, initDemoData, getDemoExercises } from "@/lib/demo-store";
 
 interface Exercise {
   id: string;
@@ -27,6 +28,13 @@ export default function ExercisesPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (DEMO_MODE) {
+      initDemoData();
+      const d = getDemoExercises();
+      setExercises(d.exercises ?? []); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoading(false); // eslint-disable-line react-hooks/set-state-in-effect
+      return;
+    }
     fetch("/api/exercises")
       .then((r) => r.json())
       .then((d) => {

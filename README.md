@@ -62,6 +62,56 @@ VAPID_PRIVATE_KEY=
 VAPID_SUBJECT=
 ```
 
+## Set Up Your Own
+
+### Prerequisites
+
+- Node.js 20+
+- A free [Supabase](https://supabase.com) account
+- A free [Resend](https://resend.com) account (for email export)
+- Cloudflare Pages or Vercel for hosting
+
+### Steps
+
+```bash
+# 1. Clone and install
+git clone https://github.com/tHALL3000/pt-in-your-pocket.git
+cd pt-in-your-pocket
+npm install
+
+# 2. Set up environment
+cp .env.example .env.local
+# Fill in your Supabase, Resend, and VAPID credentials
+
+# 3. Generate VAPID keys for push notifications
+npx web-push generate-vapid-keys
+
+# 4. Run database migrations and seed exercises
+npx prisma migrate dev
+npx prisma db seed
+
+# 5. Start dev server
+npm run dev
+```
+
+### Deploy to Cloudflare Pages
+
+1. Push to GitHub
+2. Connect repo in the Cloudflare Pages dashboard
+3. Build command: `next build`
+4. Output directory: `.vercel/output/static`
+5. Add all env vars from `.env.example` in the Pages settings
+
+### Deploy to Vercel (simpler alternative)
+
+1. Push to GitHub
+2. Import repo at vercel.com
+3. Add env vars — Vercel auto-detects Next.js, no extra config needed
+
+### Try demo mode first
+
+Set `NEXT_PUBLIC_DEMO_MODE=true` in `.env.local` to run the app without a database. All data is stored in localStorage — great for trying it out before wiring up credentials.
+
 ## Deployment
 
 Deployed automatically via Cloudflare Pages on push to `main`. The build command is `next build` and the output directory is `.vercel/output/static` (handled by `@cloudflare/next-on-pages`).

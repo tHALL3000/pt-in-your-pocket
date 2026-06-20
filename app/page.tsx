@@ -7,6 +7,7 @@ import BottomNav from "@/components/BottomNav";
 import Link from "next/link";
 import CornerDecoration from "@/components/CornerDecoration";
 import { type RoutineLevel, ROUTINE_LIMITS, ROUTINE_META, readRoutineLevel } from "@/lib/routine";
+import { DEMO_MODE, initDemoData, getDemoExercises } from "@/lib/demo-store";
 
 interface Exercise {
   id: string;
@@ -34,6 +35,13 @@ export default function TodayPage() {
 
   useEffect(() => {
     setRoutineLevel(readRoutineLevel()); // eslint-disable-line react-hooks/set-state-in-effect
+    if (DEMO_MODE) {
+      initDemoData();
+      const d = getDemoExercises();
+      setExercises(d.exercises ?? []); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoading(false); // eslint-disable-line react-hooks/set-state-in-effect
+      return;
+    }
     fetch("/api/exercises")
       .then((r) => r.json())
       .then((d) => {

@@ -3,12 +3,13 @@
 import { useEffect, useState, useRef } from "react";
 import BottomNav from "@/components/BottomNav";
 import CornerDecoration from "@/components/CornerDecoration";
+import { DEMO_MODE, initDemoData, getDemoProgress } from "@/lib/demo-store";
 
 interface LogEntry {
   date: string;
   painLevel: number | null;
   notes: string | null;
-  entries: { repsDone: number; setsDone: number; exercise: { name: string } }[];
+  entries: { repsDone: number; setsDone?: number; exercise: { name: string } }[];
 }
 
 export default function ExportPage() {
@@ -20,12 +21,19 @@ export default function ExportPage() {
   const emailRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch("/api/progress")
-      .then((r) => r.json())
-      .then((d) => {
-        setLogs(d.logs ?? []);
-        setLoading(false);
-      });
+    if (DEMO_MODE) {
+      initDemoData();
+      const d = getDemoProgress();
+      setLogs(d.logs ?? []); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoading(false); // eslint-disable-line react-hooks/set-state-in-effect
+    } else {
+      fetch("/api/progress")
+        .then((r) => r.json())
+        .then((d) => {
+          setLogs(d.logs ?? []);
+          setLoading(false);
+        });
+    }
 
     // Scroll to email section if hash present
     if (window.location.hash === "#email") {
@@ -35,6 +43,10 @@ export default function ExportPage() {
 
   async function sendEmail() {
     if (!ptEmail) return;
+    if (DEMO_MODE) {
+      setEmailStatus("Email is disabled in demo mode.");
+      return;
+    }
     setSending(true);
     setEmailStatus("");
     const res = await fetch("/api/export", {

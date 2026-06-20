@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Inter, Cormorant_Garamond, Crete_Round } from "next/font/google";
 import "./globals.css";
+import DemoBanner from "@/components/DemoBanner";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -56,6 +57,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
       <body className="min-h-dvh flex flex-col" style={{ fontFamily: "var(--font-inter, Inter, system-ui, sans-serif)" }}>
+        <DemoBanner />
         {children}
       </body>
     </html>

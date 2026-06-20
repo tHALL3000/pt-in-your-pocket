@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import BottomNav from "@/components/BottomNav";
 import CornerDecoration from "@/components/CornerDecoration";
 import { type RoutineLevel, ROUTINE_META, readRoutineLevel, writeRoutineLevel } from "@/lib/routine";
+import { DEMO_MODE } from "@/lib/demo-store";
 
 export default function SettingsPage() {
   const [routineLevel, setRoutineLevel] = useState<RoutineLevel>("starter");
@@ -160,38 +161,51 @@ export default function SettingsPage() {
             </p>
           </div>
 
-          {!pushSupported && (
+          {DEMO_MODE ? (
             <div
               className="rounded-xl p-3"
               style={{ background: "#fff8ec", border: "1px solid #e8d0a0" }}
             >
               <p style={{ margin: 0, fontSize: "0.9rem", color: "#7a5c1e" }}>
-                ⚠️ To enable reminders, add this app to your Home Screen and open it from there.
+                🌿 Push reminders are not available in demo mode. Set up your own instance to enable them.
               </p>
             </div>
-          )}
+          ) : (
+            <>
+              {!pushSupported && (
+                <div
+                  className="rounded-xl p-3"
+                  style={{ background: "#fff8ec", border: "1px solid #e8d0a0" }}
+                >
+                  <p style={{ margin: 0, fontSize: "0.9rem", color: "#7a5c1e" }}>
+                    ⚠️ To enable reminders, add this app to your Home Screen and open it from there.
+                  </p>
+                </div>
+              )}
 
-          {pushSupported && (
-            <button
-              onClick={togglePush}
-              disabled={toggling}
-              style={{
-                background: pushEnabled ? "#d4a5a5" : "#3d6b4a",
-                color: "#fdf8f0",
-                border: "none",
-                borderRadius: "14px",
-                padding: "1rem",
-                fontSize: "1.1rem",
-                fontWeight: 700,
-                minHeight: "60px",
-              }}
-            >
-              {toggling
-                ? "Working…"
-                : pushEnabled
-                ? "Turn Off Reminders"
-                : "Turn On Daily Reminders 🌿"}
-            </button>
+              {pushSupported && (
+                <button
+                  onClick={togglePush}
+                  disabled={toggling}
+                  style={{
+                    background: pushEnabled ? "#d4a5a5" : "#3d6b4a",
+                    color: "#fdf8f0",
+                    border: "none",
+                    borderRadius: "14px",
+                    padding: "1rem",
+                    fontSize: "1.1rem",
+                    fontWeight: 700,
+                    minHeight: "60px",
+                  }}
+                >
+                  {toggling
+                    ? "Working…"
+                    : pushEnabled
+                    ? "Turn Off Reminders"
+                    : "Turn On Daily Reminders 🌿"}
+                </button>
+              )}
+            </>
           )}
 
           {status && (

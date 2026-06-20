@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import BottomNav from "@/components/BottomNav";
 import Link from "next/link";
+import { DEMO_MODE, initDemoData, getDemoProgress } from "@/lib/demo-store";
 
 interface LogEntry {
   date: string;
@@ -78,6 +79,13 @@ export default function ProgressPage() {
   const [selectedLog, setSelectedLog] = useState<LogEntry | null>(null);
 
   useEffect(() => {
+    if (DEMO_MODE) {
+      initDemoData();
+      const d = getDemoProgress();
+      setLogs(d.logs ?? []); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoading(false); // eslint-disable-line react-hooks/set-state-in-effect
+      return;
+    }
     fetch("/api/progress")
       .then((r) => r.json())
       .then((d) => {

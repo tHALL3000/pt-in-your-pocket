@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import RepCounter from "@/components/RepCounter";
 import PainScale from "@/components/PainScale";
 import BottomNav from "@/components/BottomNav";
+import { DEMO_MODE, initDemoData, getDemoExercises, getDemoLog, saveDemoLog } from "@/lib/demo-store";
 
 interface Exercise {
   id: string;
@@ -35,31 +36,33 @@ export default function LogPage() {
   });
 
   useEffect(() => {
+    function applyLogData(exs: Exercise[], logData: { log: { painLevel?: number | null; notes?: string | null; entries?: { exerciseId: string; repsDone: number; setsDone: number }[] } | null }) {
+      setExercises(exs); // eslint-disable-line react-hooks/set-state-in-effect
+      const initial: Record<string, EntryState> = {};
+      exs.forEach((ex) => { initial[ex.id] = { repsDone: 0, setsDone: ex.recommendedSets }; });
+      if (logData.log) {
+        const log = logData.log;
+        if (log.painLevel) setPainLevel(log.painLevel); // eslint-disable-line react-hooks/set-state-in-effect
+        if (log.notes) setNotes(log.notes); // eslint-disable-line react-hooks/set-state-in-effect
+        (log.entries ?? []).forEach((e) => { if (initial[e.exerciseId]) initial[e.exerciseId] = { repsDone: e.repsDone, setsDone: e.setsDone }; });
+      }
+      setEntries(initial); // eslint-disable-line react-hooks/set-state-in-effect
+      setLoading(false); // eslint-disable-line react-hooks/set-state-in-effect
+    }
+
+    if (DEMO_MODE) {
+      initDemoData();
+      const exs = getDemoExercises().exercises as Exercise[];
+      const logData = getDemoLog(today);
+      applyLogData(exs, logData);
+      return;
+    }
+
     Promise.all([
       fetch("/api/exercises").then((r) => r.json()),
       fetch(`/api/log?date=${today}`).then((r) => r.json()),
     ]).then(([exData, logData]) => {
-      const exs: Exercise[] = exData.exercises ?? [];
-      setExercises(exs);
-
-      const initial: Record<string, EntryState> = {};
-      exs.forEach((ex) => {
-        initial[ex.id] = { repsDone: 0, setsDone: ex.recommendedSets };
-      });
-
-      if (logData.log) {
-        const log = logData.log;
-        if (log.painLevel) setPainLevel(log.painLevel);
-        if (log.notes) setNotes(log.notes);
-        (log.entries ?? []).forEach((e: { exerciseId: string; repsDone: number; setsDone: number }) => {
-          if (initial[e.exerciseId]) {
-            initial[e.exerciseId] = { repsDone: e.repsDone, setsDone: e.setsDone };
-          }
-        });
-      }
-
-      setEntries(initial);
-      setLoading(false);
+      applyLogData(exData.exercises ?? [], logData);
     });
   }, [today]);
 
@@ -75,6 +78,13 @@ export default function LogPage() {
       repsDone: e.repsDone,
       setsDone: e.setsDone,
     }));
+
+    if (DEMO_MODE) {
+      saveDemoLog(today, { painLevel, notes, entries: entryList });
+      setSaving(false);
+      setSaved(true);
+      return;
+    }
 
     await fetch("/api/log", {
       method: "POST",
