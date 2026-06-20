@@ -11,6 +11,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import BottomNav from "@/components/BottomNav";
+import CornerDecoration from "@/components/CornerDecoration";
 import Link from "next/link";
 
 interface LogEntry {
@@ -32,7 +33,7 @@ function StreakCalendar({ logs }: { logs: LogEntry[] }) {
   const cells: (number | null)[] = [...Array(firstDay).fill(null), ...Array.from({ length: daysInMonth }, (_, i) => i + 1)];
 
   return (
-    <div className="flex flex-col gap-3 rounded-2xl p-4" style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}>
+    <div className="witchy-card flex flex-col gap-3 p-4" style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}>
       <h2 style={{ margin: 0, fontSize: "1.15rem" }}>{monthName}</h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "6px" }}>
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
@@ -133,7 +134,7 @@ export default function ProgressPage() {
               ].map(({ label, value }) => (
                 <div
                   key={label}
-                  className="rounded-2xl p-4 flex flex-col gap-1"
+                  className="witchy-card p-4 flex flex-col gap-1"
                   style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
                 >
                   <span
@@ -157,7 +158,7 @@ export default function ProgressPage() {
 
             {/* Chart */}
             {logs.length > 1 && (
-              <div className="flex flex-col gap-3 rounded-2xl p-4" style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}>
+              <div className="witchy-card flex flex-col gap-3 p-4" style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}>
                 <div className="flex gap-2">
                   {(["reps", "pain"] as const).map((t) => (
                     <button
@@ -245,7 +246,7 @@ export default function ProgressPage() {
 
             {/* Export CTA */}
             <div
-              className="rounded-2xl p-5 flex flex-col gap-3"
+              className="witchy-card p-5 flex flex-col gap-3"
               style={{ background: "#e8f0e4", border: "2px solid #87a878" }}
             >
               <h2 style={{ margin: 0, fontSize: "1.1rem" }}>Share with your PT</h2>
@@ -273,6 +274,7 @@ export default function ProgressPage() {
         )}
       </main>
 
+      <CornerDecoration src="/decorations/right-top-corner-grape.png" corner="bottom-right" />
       <BottomNav />
     </>
   );

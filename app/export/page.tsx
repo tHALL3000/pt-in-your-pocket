@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import BottomNav from "@/components/BottomNav";
+import CornerDecoration from "@/components/CornerDecoration";
 
 interface LogEntry {
   date: string;
@@ -91,7 +92,7 @@ export default function ExportPage() {
               return (
                 <div
                   key={log.date}
-                  className="print-log-entry rounded-2xl p-4 flex flex-col gap-2"
+                  className="print-log-entry witchy-card p-4 flex flex-col gap-2"
                   style={{ background: "#f5eddf", border: "1px solid #e0d0bc" }}
                 >
                   <div className="flex justify-between items-start">
@@ -150,7 +151,7 @@ export default function ExportPage() {
         <div
           ref={emailRef}
           id="email"
-          className="rounded-2xl p-5 flex flex-col gap-4 no-print"
+          className="witchy-card p-5 flex flex-col gap-4 no-print"
           style={{ background: "#e8f0e4", border: "2px solid #87a878" }}
         >
           <div>
@@ -210,6 +211,7 @@ export default function ExportPage() {
         </div>
       </main>
 
+      <CornerDecoration src="/decorations/bottom-left-corner-flower.png" corner="bottom-left" />
       <BottomNav />
     </>
   );

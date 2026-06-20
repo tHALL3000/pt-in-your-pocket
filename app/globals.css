@@ -99,6 +99,10 @@
   100% { left: 150%; }
 }
 
+.witchy-card {
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+}
+
 .witchy-exercise-card {
   background-color: rgba(255, 253, 249, 0.82);
   border: 2px solid #556b2f;

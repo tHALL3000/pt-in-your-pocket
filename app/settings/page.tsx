@@ -98,7 +98,7 @@ export default function SettingsPage() {
 
         {/* Your Routine */}
         <div
-          className="rounded-2xl p-5 flex flex-col gap-4"
+          className="witchy-card p-5 flex flex-col gap-4"
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <div>
@@ -149,7 +149,7 @@ export default function SettingsPage() {
 
         {/* Push notifications */}
         <div
-          className="rounded-2xl p-5 flex flex-col gap-4"
+          className="witchy-card p-5 flex flex-col gap-4"
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <div>
@@ -203,7 +203,7 @@ export default function SettingsPage() {
 
         {/* About */}
         <div
-          className="rounded-2xl p-5 flex flex-col gap-3"
+          className="witchy-card p-5 flex flex-col gap-3"
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <h2 style={{ margin: 0, fontSize: "1.1rem" }}>About</h2>

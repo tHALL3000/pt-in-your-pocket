@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import RepCounter from "@/components/RepCounter";
 import PainScale from "@/components/PainScale";
 import BottomNav from "@/components/BottomNav";
+import CornerDecoration from "@/components/CornerDecoration";
 
 interface Exercise {
   id: string;
@@ -182,6 +183,7 @@ export default function LogPage() {
         )}
       </main>
 
+      <CornerDecoration src="/decorations/left-top-corner-ivy.png" corner="bottom-left" />
       <BottomNav />
     </>
   );
