@@ -44,7 +44,7 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
       <div className="witchy-exercise-card">
         {/* Header */}
         <button
-          className="w-full text-left p-4 flex items-start justify-between gap-3"
+          className="w-full text-left p-3 flex items-start justify-between gap-3"
           onClick={() => setExpanded(!expanded)}
           aria-expanded={expanded}
         >
