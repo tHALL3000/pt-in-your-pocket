@@ -29,6 +29,8 @@ export async function POST(req: Request) {
     entries: { exerciseId: string; repsDone: number; setsDone: number }[];
   };
 
+  console.log("[LOG POST] received", { date, painLevel, notes, entryCount: entries?.length });
+
   const admin = createAdminClient();
 
   // Upsert the log record
@@ -41,7 +43,10 @@ export async function POST(req: Request) {
     .select()
     .single();
 
+  console.log("[LOG POST] upsert log result", { log, logError });
+
   if (logError || !log) {
+    console.error("[LOG POST] failed to upsert log", logError);
     return NextResponse.json({ error: logError?.message ?? "Failed to save log" }, { status: 500 });
   }
 
@@ -56,10 +61,13 @@ export async function POST(req: Request) {
       setsDone: e.setsDone,
     }));
     const { error: entryError } = await admin.from("PtExerciseEntry").insert(rows);
+    console.log("[LOG POST] insert entries result", { count: rows.length, entryError });
     if (entryError) {
+      console.error("[LOG POST] failed to insert entries", entryError);
       return NextResponse.json({ error: entryError.message }, { status: 500 });
     }
   }
 
+  console.log("[LOG POST] success", { logId: log.id });
   return NextResponse.json({ log });
 }
