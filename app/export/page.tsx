@@ -129,7 +129,7 @@ export default function ExportPage() {
                       <span
                         key={i}
                         className="print-log-exercise-tag rounded-lg px-2 py-0.5"
-                        style={{ fontSize: "0.8rem", background: "#e8f0e4", color: "#3d6b4a" }}
+                        style={{ fontSize: "0.9rem", background: "#e8f0e4", color: "#3d6b4a" }}
                       >
                         {e.exercise.name}: {e.repsDone} reps
                       </span>

@@ -34,10 +34,10 @@ function StreakCalendar({ logs }: { logs: LogEntry[] }) {
 
   return (
     <div className="witchy-card flex flex-col gap-3 p-4" style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}>
-      <h2 style={{ margin: 0, fontSize: "1.15rem" }}>{monthName}</h2>
+      <h2 style={{ margin: 0 }}>{monthName}</h2>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "6px" }}>
         {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((d) => (
-          <div key={d} style={{ textAlign: "center", fontSize: "0.72rem", color: "#8b6355", fontWeight: 600 }}>
+          <div key={d} style={{ textAlign: "center", fontSize: "0.85rem", color: "#8b6355", fontWeight: 600 }}>
             {d}
           </div>
         ))}
@@ -205,7 +205,7 @@ export default function ProgressPage() {
                     />
                   </LineChart>
                 </ResponsiveContainer>
-                <p style={{ fontSize: "0.8rem", color: "#8b6355", margin: 0, textAlign: "center" }}>
+                <p style={{ fontSize: "0.9rem", color: "#8b6355", margin: 0, textAlign: "center" }}>
                   Tap a point to see that day&apos;s notes
                 </p>
               </div>
@@ -249,7 +249,7 @@ export default function ProgressPage() {
               className="witchy-card p-5 flex flex-col gap-3"
               style={{ background: "#e8f0e4", border: "2px solid #87a878" }}
             >
-              <h2 style={{ margin: 0, fontSize: "1.1rem" }}>Share with your PT</h2>
+              <h2 style={{ margin: 0 }}>Share with your PT</h2>
               <p style={{ margin: 0, fontSize: "0.9rem", color: "#5c4033" }}>
                 Print your full history or email it directly to your physical therapist.
               </p>

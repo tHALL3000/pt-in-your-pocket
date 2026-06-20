@@ -102,7 +102,7 @@ export default function SettingsPage() {
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <div>
-            <h2 style={{ margin: 0, fontSize: "1.2rem" }}>Your Routine</h2>
+            <h2 style={{ margin: 0 }}>Your Routine</h2>
             <p style={{ margin: "6px 0 0", fontSize: "0.95rem", color: "#8b6355", lineHeight: 1.5 }}>
               Choose how many exercises to show on your Today page. You can always change this as you get stronger.
             </p>
@@ -134,7 +134,7 @@ export default function SettingsPage() {
                     <p style={{ margin: 0, fontSize: "1rem", fontWeight: 700, color: "#3d3123" }}>
                       {meta.label}
                     </p>
-                    <p style={{ margin: "3px 0 0", fontSize: "0.85rem", color: "#8b6355", lineHeight: 1.4 }}>
+                    <p style={{ margin: "3px 0 0", fontSize: "0.95rem", color: "#8b6355", lineHeight: 1.4 }}>
                       {meta.count} exercises · {meta.desc.split(" · ")[1] ?? meta.desc}
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export default function SettingsPage() {
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
           <div>
-            <h2 style={{ margin: 0, fontSize: "1.2rem" }}>Daily Reminders</h2>
+            <h2 style={{ margin: 0 }}>Daily Reminders</h2>
             <p style={{ margin: "6px 0 0", fontSize: "0.95rem", color: "#8b6355", lineHeight: 1.5 }}>
               Get a gentle push notification each day reminding you to do your exercises.
               For this to work, first add this app to your iPhone Home Screen (tap Share → Add to Home Screen).
@@ -206,8 +206,8 @@ export default function SettingsPage() {
           className="witchy-card p-5 flex flex-col gap-3"
           style={{ background: "#f5eddf", border: "2px solid #e0d0bc" }}
         >
-          <h2 style={{ margin: 0, fontSize: "1.1rem" }}>About</h2>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "#8b6355", lineHeight: 1.6 }}>
+          <h2 style={{ margin: 0 }}>About</h2>
+          <p style={{ margin: 0, fontSize: "0.95rem", color: "#8b6355", lineHeight: 1.6 }}>
             PT Companion is an open-source personal exercise tracker for home use during knee recovery.
             All data stays private and is only stored on this device.
           </p>
@@ -215,25 +215,25 @@ export default function SettingsPage() {
             className="rounded-xl p-3 flex flex-col gap-2"
             style={{ background: "#fff4f4", border: "1px solid #d4a5a5" }}
           >
-            <p style={{ margin: 0, fontSize: "0.85rem", fontWeight: 700, color: "#7a2f2f", lineHeight: 1.5 }}>
+            <p style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, color: "#7a2f2f", lineHeight: 1.5 }}>
               ⚠️ Medical Disclaimer
             </p>
-            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: "0.95rem", color: "#7a2f2f", lineHeight: 1.6 }}>
               This app is not medical advice. The creator is not a doctor, physical therapist, or licensed
               healthcare provider. All exercises should be performed only under the guidance and approval
               of your own physical therapist or physician.
             </p>
-            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: "0.95rem", color: "#7a2f2f", lineHeight: 1.6 }}>
               By using this app or any part of its open-source code, you acknowledge that you use it
               entirely at your own risk. The creator assumes no liability for any injury, harm, or
               adverse outcome that may result from use of this app.
             </p>
-            <p style={{ margin: 0, fontSize: "0.85rem", color: "#7a2f2f", lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: "0.95rem", color: "#7a2f2f", lineHeight: 1.6 }}>
               Stop immediately and consult your healthcare provider if you experience pain, swelling,
               or discomfort during any exercise.
             </p>
           </div>
-          <p style={{ margin: 0, fontSize: "0.85rem", color: "#8b6355" }}>
+          <p style={{ margin: 0, fontSize: "0.95rem", color: "#8b6355" }}>
             Made with 🌿 and care.
           </p>
         </div>

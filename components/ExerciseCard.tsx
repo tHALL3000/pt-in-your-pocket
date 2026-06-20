@@ -97,7 +97,7 @@ export default function ExerciseCard({ exercise, compact = false }: ExerciseCard
                   className="absolute bottom-0 left-0 right-0 px-3 py-2"
                   style={{ background: "rgba(0,0,0,0.5)" }}
                 >
-                  <p style={{ color: "#fff", fontSize: "0.8rem", margin: 0 }}>
+                  <p style={{ color: "#fff", fontSize: "0.9rem", margin: 0 }}>
                     ▶ Tap to watch on YouTube
                   </p>
                 </div>
