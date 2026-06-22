@@ -81,17 +81,17 @@ export default function LogPage() {
 
     if (DEMO_MODE) {
       saveDemoLog(today, { painLevel, notes, entries: entryList });
-      setSaving(false);
-      setSaved(true);
-      return;
+    } else {
+      await fetch("/api/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ date: today, painLevel, notes, entries: entryList }),
+      });
     }
 
-    await fetch("/api/log", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ date: today, painLevel, notes, entries: entryList }),
-    });
-
+    setEntries((prev) =>
+      Object.fromEntries(Object.entries(prev).map(([id, e]) => [id, { ...e, repsDone: 0 }]))
+    );
     setSaving(false);
     setSaved(true);
   }
