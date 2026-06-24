@@ -28,6 +28,19 @@ Every design and font-size decision in this codebase should be evaluated against
 
 A daily motivation banner shows on first open each day and dismisses with one tap.
 
+## Screenshots
+<img width="310" height="669" alt="today" src="https://github.com/user-attachments/assets/448d6da5-c148-4d34-a846-b8a8a82ade57" />
+<img width="301" height="663" alt="heel-slide" src="https://github.com/user-attachments/assets/5ab27867-e0d2-4e6b-a422-439dea5c2305" />
+<img width="310" height="669" alt="ankle" src="https://github.com/user-attachments/assets/02fac6e8-e8eb-476f-ad3f-80b411fbebb0" />
+<img width="309" height="665" alt="log-1" src="https://github.com/user-attachments/assets/111a8d33-6981-4935-b475-f747d3257974" />
+<img width="306" height="636" alt="log-2" src="https://github.com/user-attachments/assets/49efbbb7-5c94-409e-9d16-04a94118a075" />
+<img width="304" height="668" alt="progress-1" src="https://github.com/user-attachments/assets/57abf191-653b-4a2d-8d7d-b303d2d47c82" />
+<img width="305" height="598" alt="progress-2" src="https://github.com/user-attachments/assets/7a269663-4263-4d69-9b4a-6df640ffa0c5" />
+<img width="309" height="665" alt="library" src="https://github.com/user-attachments/assets/ddef6254-1123-46e3-b8bc-0cb3d9c5333e" />
+<img width="307" height="669" alt="setting" src="https://github.com/user-attachments/assets/b4b5ba9d-4e96-4eec-a359-1e06db76b4cf" />
+
+
+
 ## Stack
 
 | Layer | Choice |
